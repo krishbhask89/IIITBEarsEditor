@@ -7,10 +7,12 @@ package myearseditor.View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -23,7 +25,10 @@ public class BasePanel extends javax.swing.JPanel {
      */
     public BasePanel() {
         initComponents();
+        //_bpScrollPane = new JScrollPane(this);
         this._reqPosition = 0;
+        _comboBoxPanel.setAutoscrolls(true);
+        
     }
 
     /**
@@ -39,7 +44,6 @@ public class BasePanel extends javax.swing.JPanel {
         _reqTypeList = new javax.swing.JComboBox();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setAutoscrolls(true);
         setPreferredSize(new java.awt.Dimension(515, 350));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
@@ -78,34 +82,35 @@ public class BasePanel extends javax.swing.JPanel {
             JPanel _reqProps,_reqTemp;
             switch(_reqSelected)
             { case 1: _reqProps = new LeftPanel("Generic");
-                      _reqTemp = new GenericTemp();
-                    break;
-              case 2: _reqProps = new LeftPanel("Ubiquitous");
-                        _reqTemp = new UbiTemp();
-                    break;
-              case 3: _reqProps = new LeftPanel("Event Driven");
-                      _reqTemp = new EventDrivenTemp();
-                    break;
-              case 4: _reqProps = new LeftPanel("Unwanted Behaviour");
-                      _reqTemp = new UnwantedBehavTemp();
-                    break;
-              case 5: _reqProps = new LeftPanel("StateDriven");
-                      _reqTemp = new StateDrivenTemp();
-                    break;
-              default: _reqProps = null;
-                       _reqTemp = null;
-                    break;
+                _reqTemp = new GenericTemp();
+                break;
+                case 2: _reqProps = new LeftPanel("Ubiquitous");
+                _reqTemp = new UbiTemp();
+                break;
+                case 3: _reqProps = new LeftPanel("Event Driven");
+                _reqTemp = new EventDrivenTemp();
+                break;
+                case 4: _reqProps = new LeftPanel("Unwanted Behaviour");
+                _reqTemp = new UnwantedBehavTemp();
+                break;
+                case 5: _reqProps = new LeftPanel("StateDriven");
+                _reqTemp = new StateDrivenTemp();
+                break;
+                default: _reqProps = null;
+                _reqTemp = null;
+                break;
             }
-             _reqProps.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-             _reqTemp.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            _reqProps.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            _reqTemp.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             _newReq.setBorder(BorderFactory.createBevelBorder(1));
             _newReq.add(_reqProps,BorderLayout.WEST);
             _newReq.add(_reqTemp,BorderLayout.EAST);
+            //_newReq.setAlignmentX(Component.LEFT_ALIGNMENT);
             this.add(_newReq,_reqPosition++);
-            this.validate();
+            this.revalidate();
+            this.repaint();
         }
         else { JOptionPane.showMessageDialog(this,"Please select a valid option", "Warning", JOptionPane.WARNING_MESSAGE); }
-
     }//GEN-LAST:event__reqTypeListActionPerformed
 
 
@@ -113,5 +118,6 @@ public class BasePanel extends javax.swing.JPanel {
     private javax.swing.JPanel _comboBoxPanel;
     private javax.swing.JComboBox _reqTypeList;
     // End of variables declaration//GEN-END:variables
-    private int _reqPosition; 
+    private int _reqPosition;
+    private javax.swing.JScrollPane _bpScrollPane;
 }

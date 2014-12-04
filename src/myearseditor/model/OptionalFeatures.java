@@ -8,25 +8,26 @@ package myearseditor.model;
 /**
  *
  * @author Krish
- * Req Syntax : WHILE <in a specific state> the <system name> shall <system response>
+ * Req Syntax : WHERE <feature is included> the <system name> shall <system response>
  */
-public class StateDrivenReq extends EARSRequirement{
-    private String _reqSpecificState;
+public class OptionalFeatures extends EARSRequirement{
+    private String _reqFeatureIncluded;
     private String _reqSysName;
     private String _reqSysResponse;
-    
-    public StateDrivenReq(){
-    	super("State Driven");
+
+    public OptionalFeatures(){
+    	super("Optional Features");
     }
     
-    public StateDrivenReq(String specState,String sName, String sResp,String rCCode, String rIndex){
-        super("State Driven",rCCode,rIndex);
-        this._reqSpecificState = specState;
+    public OptionalFeatures(String featIncl,String sName, String sResp,String rCCode, String rIndex){
+        super("Optional Features",rCCode,rIndex);
+        this._reqFeatureIncluded = featIncl;
         this._reqSysName = sName;
         this._reqSysResponse = sResp;
     }
-    public String getReqSpecificState() {
-        return _reqSpecificState;
+    
+    public String getReqFeatureIncluded() {
+        return _reqFeatureIncluded;
     }
 
     public String getReqSysName() {
@@ -37,8 +38,8 @@ public class StateDrivenReq extends EARSRequirement{
         return _reqSysResponse;
     }
 
-    public void setReqSpecificState(String _reqSpecificState) {
-        this._reqSpecificState = _reqSpecificState;
+    public void setReqFeatureIncluded(String _reqFeatureIncluded) {
+        this._reqFeatureIncluded = _reqFeatureIncluded;
     }
 
     public void setReqSysName(String _reqSysName) {
@@ -48,4 +49,6 @@ public class StateDrivenReq extends EARSRequirement{
     public void setReqSysResponse(String _reqSysResponse) {
         this._reqSysResponse = _reqSysResponse;
     }
+    
+    
 }

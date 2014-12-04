@@ -20,6 +20,14 @@ public class EventDrivenRequirement extends EARSRequirement{
     	super("Event Driven");
     }
     
+    public EventDrivenRequirement(String opCond,String opTrig,String sName, String sResp,String rCCode, String rIndex){
+        super("Event Driven",rCCode,rIndex);
+        this._reqOptionalPreCond = opCond;
+        this._reqTrigger = opTrig;
+        this._reqSysName = sName;
+        this._reqSysResponse = sResp;
+    }
+    
     public String getReqOptionalPreCond() {
         return _reqOptionalPreCond;
     }

@@ -5,7 +5,9 @@
  */
 package myearseditor.View;
 
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import myearseditor.controller.RequirementFile;
 
@@ -31,7 +33,11 @@ public class Initial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jToolBar1 = new javax.swing.JToolBar();
+        _AddReqBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        _DelReqBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         _FileMenu = new javax.swing.JMenu();
@@ -46,8 +52,30 @@ public class Initial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("myEarsEditor");
         setAlwaysOnTop(true);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(640, 492));
 
-        jScrollPane1.setViewportView(jTabbedPane1);
+        jToolBar1.setRollover(true);
+
+        _AddReqBtn.setText("New Req");
+        _AddReqBtn.setFocusable(false);
+        _AddReqBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        _AddReqBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(_AddReqBtn);
+
+        jLabel1.setText(" ");
+        jToolBar1.add(jLabel1);
+
+        _DelReqBtn.setText("Delete");
+        _DelReqBtn.setFocusable(false);
+        _DelReqBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        _DelReqBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(_DelReqBtn);
+
+        jLabel2.setText(" ");
+        jToolBar1.add(jLabel2);
+
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         _FileMenu.setText("File");
 
@@ -85,12 +113,18 @@ public class Initial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
         );
+
+        jTabbedPane1.getAccessibleContext().setAccessibleName("untitled");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,12 +132,15 @@ public class Initial extends javax.swing.JFrame {
     
     private void _newFileItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__newFileItemActionPerformed
         // TODO add your handling code here:
-    	
-    	BasePanel newPanel = new BasePanel();
-    	jTabbedPane1.addTab("untitled", newPanel);
-    	RequirementFile _Reqfile = new RequirementFile(newPanel);
-                
-        
+        BasePanel newPanel = new BasePanel();
+        RequirementFile _Reqfile = new RequirementFile(newPanel);
+        JScrollPane _scrollPane = new JScrollPane(_Reqfile._reqPanel);
+        _scrollPane.setAutoscrolls(true);
+        JPanel scrollPanel = new JPanel();
+        scrollPanel.add(_scrollPane);
+        //scrollPanel.setSize(640,480);
+        scrollPanel.setAutoscrolls(true);
+        jTabbedPane1.addTab("untitled",scrollPanel);           
     }//GEN-LAST:event__newFileItemActionPerformed
 
     /**
@@ -142,6 +179,8 @@ public class Initial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton _AddReqBtn;
+    private javax.swing.JButton _DelReqBtn;
     private javax.swing.JMenu _FileMenu;
     private javax.swing.JMenu _NavigationMenu;
     private javax.swing.JMenu _ToolsMenu;
@@ -150,8 +189,10 @@ public class Initial extends javax.swing.JFrame {
     private javax.swing.JMenuItem _openFileItem;
     private javax.swing.JMenuItem _saveAsFileItem;
     private javax.swing.JMenuItem _saveFileItem;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
