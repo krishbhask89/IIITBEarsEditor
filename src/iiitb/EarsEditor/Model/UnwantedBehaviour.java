@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iiitbEarsEditor.Model;
+package iiitb.EarsEditor.Model;
 
 /**
  *
@@ -18,6 +18,14 @@ public class UnwantedBehaviour extends EARSRequirement{
     
     public UnwantedBehaviour(){
     	super("Unwanted Behaviour");
+    }
+   
+    public UnwantedBehaviour(String opCond,String opTrig,String sName, String sResp,String rCCode, String rIndex){
+        super("Unwanted Behaviour",rCCode,rIndex);
+        this._reqOptionalPreCond = opCond;
+        this._reqTrigger = opTrig;
+        this._reqSysName = sName;
+        this._reqSysResponse = sResp;
     }
     
     public void setReqOptionalPreCond(String _reqOptionalPreCond) {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iiitbEarsEditor.Model;
+package iiitb.EarsEditor.Model;
 
 /**
  *
@@ -19,6 +19,12 @@ public class StateDrivenReq extends EARSRequirement{
     	super("State Driven");
     }
     
+    public StateDrivenReq(String specState,String sName, String sResp,String rCCode, String rIndex){
+        super("State Driven",rCCode,rIndex);
+        this._reqSpecificState = specState;
+        this._reqSysName = sName;
+        this._reqSysResponse = sResp;
+    }
     public String getReqSpecificState() {
         return _reqSpecificState;
     }

@@ -3,29 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iiitbEarsEditor.Model;
+package iiitb.EarsEditor.Model;
 
 /**
  *
  * @author Krish
- * Req Syntax : WHEN <optional preconditions> <trigger> the <system name> shall <system response>
- */
-public class EventDrivenRequirement extends EARSRequirement{
+ *Req Syntax : <optional preconditions> <optional trigger> the <system name> shall <system response> */
+public class GenericRequirement extends EARSRequirement{
     private String _reqOptionalPreCond;
-    private String _reqTrigger;
+    private String _reqOptionalTrigger;
     private String _reqSysName;
     private String _reqSysResponse;
 
-    public EventDrivenRequirement(){
-    	super("Event Driven");
+    public GenericRequirement(String opCond,String opTrig,String sName, String sResp,String rCCode, String rIndex){
+        super("Generic",rCCode,rIndex);
+        this._reqOptionalPreCond = opCond;
+        this._reqOptionalTrigger = opTrig;
+        this._reqSysName = sName;
+        this._reqSysResponse = sResp;
     }
     
+    public GenericRequirement(){
+        super("Generic");
+    }
     public String getReqOptionalPreCond() {
         return _reqOptionalPreCond;
     }
 
-    public String getReqTrigger() {
-        return _reqTrigger;
+    public String getReqOptionalTrigger() {
+        return _reqOptionalTrigger;
     }
 
     public String getReqSysName() {
@@ -40,8 +46,8 @@ public class EventDrivenRequirement extends EARSRequirement{
         this._reqOptionalPreCond = _reqOptionalPreCond;
     }
 
-    public void setReqTrigger(String _reqTrigger) {
-        this._reqTrigger = _reqTrigger;
+    public void setReqOptionalTrigger(String _reqOptionalTrigger) {
+        this._reqOptionalTrigger = _reqOptionalTrigger;
     }
 
     public void setReqSysName(String _reqSysName) {
@@ -51,4 +57,5 @@ public class EventDrivenRequirement extends EARSRequirement{
     public void setReqSysResponse(String _reqSysResponse) {
         this._reqSysResponse = _reqSysResponse;
     }
+    
 }
