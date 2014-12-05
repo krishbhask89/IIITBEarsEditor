@@ -16,12 +16,12 @@ import javax.swing.table.TableCellRenderer;
  *
  * @author michael
  */
-public class OptionalFeaturesRequirement extends javax.swing.JPanel implements TableCellRenderer, TableCellEditor {
+public class OptionalFeaturesRequirementUI extends javax.swing.JPanel implements TableCellRenderer, TableCellEditor {
 
     /**
      * Creates new form OptionalFeaturesRequirement
      */
-    public OptionalFeaturesRequirement() {
+    public OptionalFeaturesRequirementUI() {
         initComponents();
     }
 
