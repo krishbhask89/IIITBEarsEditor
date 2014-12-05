@@ -41,7 +41,26 @@ public class TabUI extends JTable{
                     this.getColumnModel().getColumn(1).setCellRenderer(gr);
                     this.getColumnModel().getColumn(1).setCellEditor(gr);
                 break;
-            case 2: 
+            case 2: UbiquitousRequirementUI ub = new UbiquitousRequirementUI();
+                    this.getColumnModel().getColumn(1).setCellRenderer(ub);
+                    this.getColumnModel().getColumn(1).setCellEditor(ub);
+                break;
+            case 3: EventDrivenRequirementUI edr = new EventDrivenRequirementUI();
+                    this.getColumnModel().getColumn(1).setCellRenderer(edr);
+                    this.getColumnModel().getColumn(1).setCellEditor(edr);
+                break;
+            case 4: UnwantedBehaviourRequirementUI un = new UnwantedBehaviourRequirementUI();
+                    this.getColumnModel().getColumn(1).setCellRenderer(un);
+                    this.getColumnModel().getColumn(1).setCellEditor(un);
+                break;    
+            case 5: StateDrivenRequirementUI std = new StateDrivenRequirementUI();
+                    this.getColumnModel().getColumn(1).setCellRenderer(std);
+                    this.getColumnModel().getColumn(1).setCellEditor(std);
+                break;
+            case 6: OptionalFeaturesRequirementUI op = new OptionalFeaturesRequirementUI();
+                    this.getColumnModel().getColumn(1).setCellRenderer(op);
+                    this.getColumnModel().getColumn(1).setCellEditor(op);
+                break;
         }
     }
 }
