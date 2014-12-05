@@ -179,7 +179,7 @@ public class MainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel dtm = (DefaultTableModel)tu.getModel();
         LeftPaneUI lp1 = new LeftPaneUI();
-        dtm.insertRow(1, new Object[][]{{lp1, }});
+        dtm.insertRow(1, new Object[][]{{ }});
         
         tu.getColumnModel().getColumn(0).setCellRenderer(lp1);
         tu.getColumnModel().getColumn(0).setCellEditor(lp1);

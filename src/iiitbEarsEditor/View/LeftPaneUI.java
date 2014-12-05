@@ -172,7 +172,17 @@ public class LeftPaneUI extends javax.swing.JPanel implements TableCellRenderer,
                     case 0: //JOptionPane.showMessageDialog(JTabbedPane1, "Please select a valid option", "Warning", JOptionPane.WARNING_MESSAGE);
                             break;
                     case 1: MainUI.addElements(1);
-                        
+                            break;
+                    case 2: MainUI.addElements(2);
+                            break;
+                    case 3: MainUI.addElements(3);
+                            break;
+                    case 4: MainUI.addElements(4);
+                            break;
+                    case 5: MainUI.addElements(5);
+                            break;
+                    case 6: MainUI.addElements(6);
+                            break;
                 }
             }
         });

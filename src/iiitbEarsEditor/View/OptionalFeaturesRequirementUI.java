@@ -16,12 +16,12 @@ import javax.swing.table.TableCellRenderer;
  *
  * @author michael
  */
-public class StateDrivenRequirement extends javax.swing.JPanel implements TableCellRenderer, TableCellEditor{
+public class OptionalFeaturesRequirementUI extends javax.swing.JPanel implements TableCellRenderer, TableCellEditor {
 
     /**
-     * Creates new form StateDrivenRequirement
+     * Creates new form OptionalFeaturesRequirement
      */
-    public StateDrivenRequirement() {
+    public OptionalFeaturesRequirementUI() {
         initComponents();
     }
 
@@ -41,48 +41,39 @@ public class StateDrivenRequirement extends javax.swing.JPanel implements TableC
         jLabel3 = new javax.swing.JLabel();
         sys_response = new javax.swing.JTextField();
 
-        jLabel1.setText("While");
+        jLabel1.setText("Where");
 
         specific_state.setText("<in a specific state>");
 
         jLabel2.setText("the");
 
         sys_name.setText("<system name>");
-        sys_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sys_nameActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("shall");
 
         sys_response.setText("<system response>");
-        sys_response.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sys_responseActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)
+                        .addGap(40, 40, 40)
+                        .addComponent(specific_state, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(sys_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addGap(27, 27, 27)
-                        .addComponent(sys_response, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(29, 29, 29)
-                        .addComponent(specific_state, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel2)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addComponent(sys_response, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,22 +83,14 @@ public class StateDrivenRequirement extends javax.swing.JPanel implements TableC
                     .addComponent(jLabel1)
                     .addComponent(specific_state, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sys_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(sys_response, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void sys_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sys_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sys_nameActionPerformed
-
-    private void sys_responseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sys_responseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sys_responseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

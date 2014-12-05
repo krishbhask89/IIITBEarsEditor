@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import sun.nio.fs.GnomeFileTypeDetector;
 
 /**
  *
@@ -35,10 +36,12 @@ public class TabUI extends JTable{
         System.out.println("comes here also");
         switch(type)
         {
-            case 1: EventDrivenRequirementUI edr = new EventDrivenRequirementUI();
+            case 1: GenericRequirementUI gr = new GenericRequirementUI();
                     System.out.println("executed");
-                    this.getColumnModel().getColumn(1).setCellRenderer(edr);
-                    this.getColumnModel().getColumn(1).setCellEditor(edr);
+                    this.getColumnModel().getColumn(1).setCellRenderer(gr);
+                    this.getColumnModel().getColumn(1).setCellEditor(gr);
+                break;
+            case 2: 
         }
     }
 }
