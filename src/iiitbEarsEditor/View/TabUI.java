@@ -9,13 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import sun.nio.fs.GnomeFileTypeDetector;
+
 
 /**
  *
  * @author michael
  */
-public class TabUI extends JTable{
+/*public class TabUI extends JTable{
     
     public LeftPaneUI lp;
     public TabUI(){
@@ -63,4 +63,4 @@ public class TabUI extends JTable{
                 break;
         }
     }
-}
+}*/

@@ -17,12 +17,13 @@ import javax.swing.event.CellEditorListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import iiitbEarsEditor.View.MainUI;
+import javax.swing.JPanel;
 
 /**
  *
  * @author michael
  */
-public class LeftPaneUI extends javax.swing.JPanel implements TableCellRenderer,TableCellEditor {
+public class LeftPaneUI extends javax.swing.JPanel {//implements TableCellRenderer,TableCellEditor {
 
     /**
      * Creates new form LeftPaneUI
@@ -64,6 +65,11 @@ public class LeftPaneUI extends javax.swing.JPanel implements TableCellRenderer,
         type_val.setEditable(true);
         type_val.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Generic", "Ubiquitous", "Event Driven", "Unwanted", "State Driven", "Optional" }));
         type_val.setRequestFocusEnabled(true);
+        type_val.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                type_valActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,6 +118,30 @@ public class LeftPaneUI extends javax.swing.JPanel implements TableCellRenderer,
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void type_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_valActionPerformed
+        // TODO add your handling code here:
+       int selected = type_val.getSelectedIndex();
+       switch(selected)
+                {
+                    case 0: //JOptionPane.showMessageDialog(JTabbedPane1, "Please select a valid option", "Warning", JOptionPane.WARNING_MESSAGE);
+                            break;
+                    case 1: MainUI.addElements(1);
+                            break;
+                    case 2: MainUI.addElements(2);
+                            break;
+                    case 3: MainUI.addElements(3);
+                            break;
+                    case 4: MainUI.addElements(4);
+                            break;
+                    case 5: MainUI.addElements(5);
+                            break;
+                    case 6: MainUI.addElements(6);
+                            break;
+                }
+       
+        
+    }//GEN-LAST:event_type_valActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel color;
@@ -123,7 +153,7 @@ public class LeftPaneUI extends javax.swing.JPanel implements TableCellRenderer,
     public javax.swing.JComboBox type_val;
     // End of variables declaration//GEN-END:variables
 
-    @Override
+    /*@Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return this;
@@ -197,5 +227,5 @@ public class LeftPaneUI extends javax.swing.JPanel implements TableCellRenderer,
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return this;
-    }
+    }*/
 }

@@ -24,7 +24,7 @@ DefaultTableModel dm = new DefaultTableModel();
 dm.setDataVector( new Object[][] { {"1" },  }, new Object[] {"Buttons","" } );
 
 JTable table = new JTable( dm );
-table.getColumnModel().getColumn(0).setCellRenderer( new LeftPaneUI() );
+//table.getColumnModel().getColumn(0).setCellRenderer( new LeftPaneUI() );
 //table.getColumn( "Buttons" ).setCellEditor( new PanelEditor( new JCheckBox() ) );
 JScrollPane scroll = new JScrollPane( table );
 table.setRowHeight( 95 );

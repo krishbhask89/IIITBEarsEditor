@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iiitb.EarsEditor.Controller;
+package iiitbEarsEditor.Controller;
 
 /**
  * ** @author Krish
@@ -21,7 +21,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import iiitb.EarsEditor.model.*;
+import iiitb.EarsEditor.Model.*;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -29,7 +29,7 @@ import org.xml.sax.SAXException;
 
 public class DomParser {
 
-    public static void CreateXML(ArrayList<EARSRequirement> reqsList, String _fileName) {
+    /*public static void CreateXML(ArrayList<EARSRequirement> reqsList, String _fileName) {
 
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -233,5 +233,5 @@ public class DomParser {
         }catch(ParserConfigurationException | SAXException | IOException | DOMException ex){
         }
       return reqsList;
-    } 
+    } */
 }

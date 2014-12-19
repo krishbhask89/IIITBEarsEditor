@@ -7,6 +7,8 @@ package iiitbEarsEditor.View;
 
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import test.JButtonTableExample;
@@ -20,7 +22,9 @@ public class MainUI extends javax.swing.JFrame {
     /**
      * Creates new form MainUI
      */
-     static TabUI tu = new TabUI();
+    // static TabUI tu = new TabUI();
+    int countPanel=1;
+    String filename = new String();
     public MainUI() {
         initComponents();
     }
@@ -34,14 +38,13 @@ public class MainUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jToolBar1 = new javax.swing.JToolBar();
+        jToolBar2 = new javax.swing.JToolBar();
         new_req = new javax.swing.JButton();
         del_req = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         file_menu = new javax.swing.JMenu();
         new_FileMenu = new javax.swing.JMenuItem();
@@ -55,7 +58,7 @@ public class MainUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToolBar1.setRollover(true);
+        jToolBar2.setRollover(true);
 
         new_req.setText("New Requirement");
         new_req.setFocusable(false);
@@ -66,47 +69,21 @@ public class MainUI extends javax.swing.JFrame {
                 new_reqActionPerformed(evt);
             }
         });
-        jToolBar1.add(new_req);
+        jToolBar2.add(new_req);
 
         del_req.setText("Delete Requirement");
         del_req.setFocusable(false);
         del_req.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         del_req.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(del_req);
+        jToolBar2.add(del_req);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Navigation", "Next red requirement", "Prev red requirement", "Next grey requirement", "Prev grey requirement", "Next green requirement", "Prev green requirement" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jComboBox1);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Navigation", "Next Red requirement", "Prev Red requirement", "Next Green requirement", "Prev Green requirement", " " }));
+        jToolBar2.add(jComboBox1);
 
-        jTabbedPane1.setMinimumSize(new java.awt.Dimension(57, 37));
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(57, 37));
-
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-        jTabbedPane1.addTab("File 1", jPanel2);
+        jPanel1.setLayout(new java.awt.GridLayout(0, 2));
+        jTabbedPane1.addTab("File 1", jPanel1);
 
         jScrollPane1.setViewportView(jTabbedPane1);
-        jTabbedPane1.getAccessibleContext().setAccessibleName("File 1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))
-        );
 
         file_menu.setText("File");
 
@@ -147,11 +124,15 @@ public class MainUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,34 +142,56 @@ public class MainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //JButtonTableExample ex = new JButtonTableExample();
-
-        jPanel2.add(tu);
-    }//GEN-LAST:event_new_FileMenuActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-        switch(jComboBox1.getSelectedIndex())
-        {
-           
-              
+        if(countPanel==1){
+            jPanel1.add(new LeftPaneUI());
+            countPanel++;
+            System.out.println("here");
         }
+        else{
+            System.out.println("comes here");
+            filename="File"+(countPanel++);
+            jTabbedPane1.addTab(filename, new JPanel(new GridLayout(0,2)));
+            jTabbedPane1.setSelectedIndex(countPanel-2);
+            JPanel c = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
+            c.add(new LeftPaneUI());
+            System.out.println("added");
+        }
+
         
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_new_FileMenuActionPerformed
 
     private void new_reqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_reqActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel dtm = (DefaultTableModel)tu.getModel();
-        LeftPaneUI lp1 = new LeftPaneUI();
-        dtm.insertRow(1, new Object[][]{{ }});
-        
-        tu.getColumnModel().getColumn(0).setCellRenderer(lp1);
-        tu.getColumnModel().getColumn(0).setCellEditor(lp1);
-       
+        JPanel p = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
+        p.add(new LeftPaneUI());
     }//GEN-LAST:event_new_reqActionPerformed
     public static void addElements(int type)
     {
         System.out.println("comes here");
-        tu.setRequirementTemplate(type);
+        JPanel d = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
+        switch(type)
+        {
+            case 1: GenericRequirementUI gr = new GenericRequirementUI();
+                d.add(gr);
+                break;
+            case 2: UbiquitousRequirementUI ub = new UbiquitousRequirementUI();
+                d.add(ub);
+                break;  
+            case 3: EventDrivenRequirementUI edr = new EventDrivenRequirementUI();
+                d.add(edr);
+                break;
+            case 4: UnwantedBehaviourRequirementUI un = new UnwantedBehaviourRequirementUI();
+                d.add(un);
+                break;
+            case 5: StateDrivenRequirementUI std = new StateDrivenRequirementUI();
+                d.add(std);
+                break;
+            case 6: OptionalFeaturesRequirementUI op = new OptionalFeaturesRequirementUI();
+                d.add(op);
+                break;
+                
+                
+        }
     }
     /**
      * @param args the command line arguments
@@ -234,10 +237,9 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JToolBar jToolBar1;
+    private static javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JMenuItem new_FileMenu;
     private javax.swing.JButton new_req;
     private javax.swing.JMenuItem open_FileMenu;

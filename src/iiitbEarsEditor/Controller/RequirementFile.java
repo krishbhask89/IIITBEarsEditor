@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iiitb.EarsEditor.Controller;
+package iiitbEarsEditor.Controller;
 
 import iiitb.EarsEditor.Model.EARSRequirement;
 import java.awt.Component;
@@ -14,7 +14,7 @@ import javax.swing.JTable;
  *
  * @author Krish
  */
-public class RequirementFile {
+/*public class RequirementFile {
     public ArrayList<EARSRequirement> _FileReqList;
     private String _fileName;
     private String _fileFormat;
@@ -37,7 +37,7 @@ public class RequirementFile {
         int rCnt = panelTable.getRowCount();
         for(int i =0; i< rCnt; i++)
         { LeftPanel ceLP = (LeftPanel) panelTable.getModel().getValueAt(i,0);
-          Component[] _lpComps = ceLP.getCompone  
+          Component[] _lpComps = ceLP.getComponent();  
         }
     	JTable table = new JTable();
         table.getRowCount();
@@ -47,4 +47,4 @@ public class RequirementFile {
     	//when the Save button is clicked for the File
     	loadReqs();
     }
-}
+}*/
