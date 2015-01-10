@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author michael
  */
+// To be used in case of working with CellRenderer and CellEditor
+
 /*public class TabUI extends JTable{
     
     public LeftPaneUI lp;

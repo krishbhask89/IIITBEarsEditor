@@ -14,6 +14,7 @@ import javax.swing.table.TableModel;
 import test.JButtonTableExample;
 
 /**
+/**
  *
  * @author michael
  */
@@ -22,7 +23,7 @@ public class MainUI extends javax.swing.JFrame {
     /**
      * Creates new form MainUI
      */
-    // static TabUI tu = new TabUI();
+    //used to keep track of the number of tabs
     int countPanel=1;
     String filename = new String();
     public MainUI() {
@@ -75,6 +76,11 @@ public class MainUI extends javax.swing.JFrame {
         del_req.setFocusable(false);
         del_req.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         del_req.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        del_req.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                del_reqActionPerformed(evt);
+            }
+        });
         jToolBar2.add(del_req);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Navigation", "Next Red requirement", "Prev Red requirement", "Next Green requirement", "Prev Green requirement", " " }));
@@ -139,35 +145,41 @@ public class MainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void new_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_FileMenuActionPerformed
-        // TODO add your handling code here:
         
-        //JButtonTableExample ex = new JButtonTableExample();
+        
+        //creating a new file to add requirements in
         if(countPanel==1){
             jPanel1.add(new LeftPaneUI());
             countPanel++;
-            System.out.println("here");
+            
         }
         else{
-            System.out.println("comes here");
+            
             filename="File"+(countPanel++);
             jTabbedPane1.addTab(filename, new JPanel(new GridLayout(0,2)));
             jTabbedPane1.setSelectedIndex(countPanel-2);
             JPanel c = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
             c.add(new LeftPaneUI());
-            System.out.println("added");
+            
         }
 
         
     }//GEN-LAST:event_new_FileMenuActionPerformed
 
     private void new_reqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_reqActionPerformed
-        // TODO add your handling code here:
+        // adding a new requirement in the currently selected tab
         JPanel p = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
         p.add(new LeftPaneUI());
     }//GEN-LAST:event_new_reqActionPerformed
+
+    private void del_reqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_reqActionPerformed
+       
+        
+    }//GEN-LAST:event_del_reqActionPerformed
     public static void addElements(int type)
     {
-        System.out.println("comes here");
+        //adding the requirement based on the type, by creating that particular object
+        
         JPanel d = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
         switch(type)
         {

@@ -16,7 +16,7 @@ import javax.swing.table.TableCellRenderer;
  *
  * @author michael
  */
-public class EventDrivenRequirementUI extends javax.swing.JPanel implements TableCellRenderer, TableCellEditor{
+public class EventDrivenRequirementUI extends javax.swing.JPanel{ //implements TableCellRenderer, TableCellEditor{
 
     /**
      * Creates new form EventDrivenRequirementUI
@@ -118,7 +118,8 @@ public class EventDrivenRequirementUI extends javax.swing.JPanel implements Tabl
     private javax.swing.JTextField trigger;
     // End of variables declaration//GEN-END:variables
 
-    @Override
+    //To be used in case of working with CellRenderer and CellEditor
+    /*@Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return this;
@@ -163,5 +164,5 @@ public class EventDrivenRequirementUI extends javax.swing.JPanel implements Tabl
     @Override
     public void removeCellEditorListener(CellEditorListener l) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 }

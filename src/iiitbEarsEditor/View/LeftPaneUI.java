@@ -119,7 +119,7 @@ public class LeftPaneUI extends javax.swing.JPanel {//implements TableCellRender
     }// </editor-fold>//GEN-END:initComponents
 
     private void type_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_valActionPerformed
-        // TODO add your handling code here:
+        // gets the index of the selected option and sends it to the MainUI class
        int selected = type_val.getSelectedIndex();
        switch(selected)
                 {
@@ -153,6 +153,8 @@ public class LeftPaneUI extends javax.swing.JPanel {//implements TableCellRender
     public javax.swing.JComboBox type_val;
     // End of variables declaration//GEN-END:variables
 
+    //To be used in case of working with CellRenderer and CellEditor
+    
     /*@Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
