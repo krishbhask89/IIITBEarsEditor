@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="cCtype">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RED" />
+            <xs:enumeration value="GREEN" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="rType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Ubiquitous" />
+            <xs:enumeration value="Event Driven" />
+            <xs:enumeration value="Unwanted Behaviour" />
+            <xs:enumeration value="State Driven" />
+            <xs:enumeration value="Optional" />
+            <xs:enumeration value="Complex" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType xmlns:earsXs="http://www.w3.org/2001/XMLSchema" name="rDetails">
+        <earsXs:sequence>
+            <earsXs:element name="rId" type="earsXs:ID" />
+            <earsXs:element name="req_type" type="rType" />
+            <earsXs:element name="colour_code" type="cCtype" />
+        </earsXs:sequence>
+    </xs:complexType>
+    <xs:complexType name="uType">
+        <xs:sequence>
+            <xs:element name="sName" type="xs:string" />
+            <xs:element name="sResp" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="edReq">
+        <xs:sequence>
+            <xs:element name="op_pc" type="xs:string" minOccurs="0" />
+            <xs:element name="trigger" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="sdReq">
+        <xs:sequence>
+            <xs:element name="spec_state" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="bReq">
+        <xs:sequence>
+            <xs:element name="op_pc" type="xs:string" minOccurs="0" />
+            <xs:element name="trigger" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="opFReq">
+        <xs:sequence>
+            <xs:element name="ftr_inc" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="sType">
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="1">
+                <xs:element name="when" type="edReq" />
+                <xs:element name="where" type="opFReq" />
+                <xs:element name="while" type="sdReq" />
+                <xs:element name="if" type="bReq" />
+            </xs:choice>
+            <xs:element name="gen" type="uType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="cType">
+        <xs:sequence>
+            <xs:choice minOccurs="2" maxOccurs="unbounded">
+                <xs:element name="when" type="edReq" />
+                <xs:element name="where" type="opFReq" />
+                <xs:element name="while" type="sdReq" />
+                <xs:element name="if" type="bReq" />
+            </xs:choice>
+            <xs:element name="gen" type="uType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="earsReq">
+        <xs:sequence>
+            <xs:element name="details" type="rDetails" />
+            <xs:choice>
+                <xs:element name="uReq" type="uType" />
+                <xs:element name="sReq" type="sType" />
+                <xs:element name="cReq" type="cType" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ReqSet">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="req" type="earsReq" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
