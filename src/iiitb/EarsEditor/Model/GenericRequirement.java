@@ -15,16 +15,16 @@ public class GenericRequirement extends EARSRequirement{
     private String _reqSysName;
     private String _reqSysResponse;
 
-    public GenericRequirement(String opCond,String opTrig,String sName, String sResp,String rCCode, String rIndex){
-        super("Generic",rCCode,rIndex);
+    public GenericRequirement(String opCond,String opTrig,String sName, String sResp,String rCCode, String _reqId){
+        super("Generic",rCCode,_reqId);
         this._reqOptionalPreCond = opCond;
         this._reqOptionalTrigger = opTrig;
         this._reqSysName = sName;
         this._reqSysResponse = sResp;
     }
     
-    public GenericRequirement(){
-        super("Generic");
+    public GenericRequirement(String _reqId){
+        super("Generic", _reqId);
     }
     public String getReqOptionalPreCond() {
         return _reqOptionalPreCond;

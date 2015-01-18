@@ -62,8 +62,7 @@ public class LeftPaneUI extends javax.swing.JPanel {//implements TableCellRender
 
         entities.setText("Word Entities");
 
-        type_val.setEditable(true);
-        type_val.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Generic", "Ubiquitous", "Event Driven", "Unwanted", "State Driven", "Optional" }));
+        type_val.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Ubiquitous", "Event Driven", "Unwanted", "State Driven", "Optional", "Complex" }));
         type_val.setRequestFocusEnabled(true);
         type_val.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

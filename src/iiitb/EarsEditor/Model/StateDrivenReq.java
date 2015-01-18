@@ -15,12 +15,12 @@ public class StateDrivenReq extends EARSRequirement{
     private String _reqSysName;
     private String _reqSysResponse;
     
-    public StateDrivenReq(){
-    	super("State Driven");
+    public StateDrivenReq(String _reqId){
+    	super("State Driven", _reqId);
     }
     
-    public StateDrivenReq(String specState,String sName, String sResp,String rCCode, String rIndex){
-        super("State Driven",rCCode,rIndex);
+    public StateDrivenReq(String specState,String sName, String sResp,String rCCode, String _reqId){
+        super("State Driven",rCCode,_reqId);
         this._reqSpecificState = specState;
         this._reqSysName = sName;
         this._reqSysResponse = sResp;

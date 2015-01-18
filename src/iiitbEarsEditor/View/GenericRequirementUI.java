@@ -8,6 +8,7 @@ package iiitbEarsEditor.View;
 import java.awt.Component;
 import java.util.EventObject;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.CellEditorListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -39,7 +40,7 @@ public class GenericRequirementUI extends javax.swing.JPanel {//implements Table
         jLabel1 = new javax.swing.JLabel();
         sys_name = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        sys_response = new javax.swing.JTextField();
 
         opt_conditions.setText("<optional preconditions>");
 
@@ -51,7 +52,7 @@ public class GenericRequirementUI extends javax.swing.JPanel {//implements Table
 
         jLabel2.setText("shall");
 
-        jTextField1.setText("<system response>");
+        sys_response.setText("<system response>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,7 +70,7 @@ public class GenericRequirementUI extends javax.swing.JPanel {//implements Table
                     .addComponent(opt_conditions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sys_response, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opt_trigger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -84,20 +85,36 @@ public class GenericRequirementUI extends javax.swing.JPanel {//implements Table
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sys_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sys_response, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getOpt_conditions() {
+        return opt_conditions;
+    }
+
+    public JTextField getOpt_trigger() {
+        return opt_trigger;
+    }
+
+    public JTextField getSys_name() {
+        return sys_name;
+    }
+
+    public JTextField getSys_response() {
+        return sys_response;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField opt_conditions;
     private javax.swing.JTextField opt_trigger;
     private javax.swing.JTextField sys_name;
+    private javax.swing.JTextField sys_response;
     // End of variables declaration//GEN-END:variables
 
     //To be used in case of working with CellRenderer and CellEditor

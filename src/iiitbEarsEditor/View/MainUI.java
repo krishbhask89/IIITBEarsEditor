@@ -5,16 +5,18 @@
  */
 package iiitbEarsEditor.View;
 
+import iiitbEarsEditor.Controller.Controller;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import test.JButtonTableExample;
 
 /**
-/**
+ * /**
  *
  * @author michael
  */
@@ -24,8 +26,9 @@ public class MainUI extends javax.swing.JFrame {
      * Creates new form MainUI
      */
     //used to keep track of the number of tabs
-    int countPanel=1;
+    int countPanel = 1;
     String filename = new String();
+
     public MainUI() {
         initComponents();
     }
@@ -105,6 +108,11 @@ public class MainUI extends javax.swing.JFrame {
         file_menu.add(open_FileMenu);
 
         save_FileMenu.setText("Save");
+        save_FileMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_FileMenuActionPerformed(evt);
+            }
+        });
         file_menu.add(save_FileMenu);
 
         saveAs_FileMenu.setText("Save As");
@@ -145,66 +153,85 @@ public class MainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void new_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_FileMenuActionPerformed
-        
-        
+
         //creating a new file to add requirements in
-        if(countPanel==1){
+        if (countPanel == 1) {
             jPanel1.add(new LeftPaneUI());
             countPanel++;
-            
-        }
-        else{
-            
-            filename="File"+(countPanel++);
-            jTabbedPane1.addTab(filename, new JPanel(new GridLayout(0,2)));
-            jTabbedPane1.setSelectedIndex(countPanel-2);
-            JPanel c = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
+
+        } else {
+
+            filename = "File" + (countPanel++);
+            jTabbedPane1.addTab(filename, new JPanel(new GridLayout(0, 2)));
+            jTabbedPane1.setSelectedIndex(countPanel - 2);
+            JPanel c = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
             c.add(new LeftPaneUI());
-            
+
         }
 
-        
+
     }//GEN-LAST:event_new_FileMenuActionPerformed
 
     private void new_reqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_reqActionPerformed
         // adding a new requirement in the currently selected tab
-        JPanel p = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
+        JPanel p = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
         p.add(new LeftPaneUI());
     }//GEN-LAST:event_new_reqActionPerformed
 
     private void del_reqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_reqActionPerformed
-       
-        
+
+
     }//GEN-LAST:event_del_reqActionPerformed
-    public static void addElements(int type)
-    {
+
+    private void save_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_FileMenuActionPerformed
+        // TODO add your handling code here:
+        JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
+        new Controller().onSave(d);
+    }//GEN-LAST:event_save_FileMenuActionPerformed
+
+    public static void addElements(int type) {
         //adding the requirement based on the type, by creating that particular object
-        
-        JPanel d = (JPanel)jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
-        switch(type)
-        {
-            case 1: GenericRequirementUI gr = new GenericRequirementUI();
-                d.add(gr);
-                break;
-            case 2: UbiquitousRequirementUI ub = new UbiquitousRequirementUI();
+
+        JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
+        //System.out.println(d.getClass());
+        switch (type) {
+
+                //System.out.println(gr.getOpt_conditions().getText());
+            //System.out.println(d.getComponentCount());
+            // System.out.println(d.getComponent(0).getClass());
+            //System.out.println(((GenericRequirementUI)d.getComponent(1)).getOpt_conditions().getText());
+            case 1:
+                UbiquitousRequirementUI ub = new UbiquitousRequirementUI();
                 d.add(ub);
-                break;  
-            case 3: EventDrivenRequirementUI edr = new EventDrivenRequirementUI();
+                break;
+            case 2:
+                EventDrivenRequirementUI edr = new EventDrivenRequirementUI();
                 d.add(edr);
                 break;
-            case 4: UnwantedBehaviourRequirementUI un = new UnwantedBehaviourRequirementUI();
+            case 3:
+                UnwantedBehaviourRequirementUI un = new UnwantedBehaviourRequirementUI();
                 d.add(un);
                 break;
-            case 5: StateDrivenRequirementUI std = new StateDrivenRequirementUI();
+            case 4:
+                StateDrivenRequirementUI std = new StateDrivenRequirementUI();
                 d.add(std);
                 break;
-            case 6: OptionalFeaturesRequirementUI op = new OptionalFeaturesRequirementUI();
+            case 5:
+                OptionalFeaturesRequirementUI op = new OptionalFeaturesRequirementUI();
                 d.add(op);
                 break;
-                
-                
+            case 6: //Complex//OptionalFeaturesRequirementUI op = new OptionalFeaturesRequirementUI();
+                //d.add(op);
+                break;
+
         }
+
+        //System.out.println(count);
+        //System.out.println(((LeftPaneUI)d.getComponent(count)).getComponent(5).getClass());
+        ((JComboBox) ((LeftPaneUI) d.getComponent(d.getComponentCount() - 2)).getComponent(5)).setEnabled(false);
+
     }
+
     /**
      * @param args the command line arguments
      */

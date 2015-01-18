@@ -108,16 +108,15 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="type_val">
       <Properties>
-        <Property name="editable" type="boolean" value="true"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="7">
             <StringItem index="0" value="Select"/>
-            <StringItem index="1" value="Generic"/>
-            <StringItem index="2" value="Ubiquitous"/>
-            <StringItem index="3" value="Event Driven"/>
-            <StringItem index="4" value="Unwanted"/>
-            <StringItem index="5" value="State Driven"/>
-            <StringItem index="6" value="Optional"/>
+            <StringItem index="1" value="Ubiquitous"/>
+            <StringItem index="2" value="Event Driven"/>
+            <StringItem index="3" value="Unwanted"/>
+            <StringItem index="4" value="State Driven"/>
+            <StringItem index="5" value="Optional"/>
+            <StringItem index="6" value="Complex"/>
           </StringArray>
         </Property>
         <Property name="requestFocusEnabled" type="boolean" value="true"/>

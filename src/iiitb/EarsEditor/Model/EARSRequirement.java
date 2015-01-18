@@ -25,33 +25,27 @@ public abstract class EARSRequirement{
     };
     private ColorCode _reqColorCode;
     
-    public void setReqId(String _reqId) {
-        this._reqId = _reqId;
-    }
-    
     public String getReqId() {
         return _reqId;
+    }
+    
+    public String getReqType() {
+        return _reqType;
     }
 
     public String getReqColorCode() {
         return _reqColorCode.toString();
-    }
-    public void setReqType(String _reqType) {
-        this._reqType = _reqType;
-    }
-
-    public String getReqType() {
-        return _reqType;
-    }
+    }    
     
-    public EARSRequirement(String _rType){
+    public EARSRequirement(String _rType, String _reqId){
+        this._reqId = _reqId;
     	this._reqColorCode = ColorCode.RED;
     	this._reqType = _rType;
     }
     
-    public EARSRequirement(String _rType,String rCCode,String rIndex){
+    public EARSRequirement(String _rType,String rCCode,String _reqId){
     	this._reqType = _rType;
-        this._reqId = rIndex;
+        this._reqId = _reqId;
         switch(rCCode)
         { case "Red" : this._reqColorCode = ColorCode.RED; break;
           case "Green" : this._reqColorCode = ColorCode.GREEN; break;

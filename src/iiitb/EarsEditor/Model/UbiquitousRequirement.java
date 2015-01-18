@@ -30,12 +30,12 @@ public class UbiquitousRequirement extends EARSRequirement{
         return _reqSysResponse;
     }
     
-    public UbiquitousRequirement(){
-    	super("Ubiquitous");
+    public UbiquitousRequirement(String _reqId){
+    	super("Ubiquitous",_reqId);
     }
     
-    public UbiquitousRequirement(String sName, String sResp,String reqCCode, String reqIndex){
-        super("Ubiquitous",reqCCode,reqIndex);
+    public UbiquitousRequirement(String sName, String sResp,String reqCCode, String _reqId){
+        super("Ubiquitous",reqCCode,_reqId);
         this._reqSysName = sName;
         this._reqSysResponse = sResp;
     }

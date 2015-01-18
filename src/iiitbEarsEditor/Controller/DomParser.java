@@ -29,7 +29,7 @@ import org.xml.sax.SAXException;
 
 public class DomParser {
 
-    /*public static void CreateXML(ArrayList<EARSRequirement> reqsList, String _fileName) {
+    public static void CreateXML(ArrayList<EARSRequirement> reqsList, String _fileName) {
 
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -233,5 +233,5 @@ public class DomParser {
         }catch(ParserConfigurationException | SAXException | IOException | DOMException ex){
         }
       return reqsList;
-    } */
+    }
 }

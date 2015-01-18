@@ -15,12 +15,12 @@ public class OptionalFeatures extends EARSRequirement{
     private String _reqSysName;
     private String _reqSysResponse;
 
-    public OptionalFeatures(){
-    	super("Optional Features");
+    public OptionalFeatures(String _reqId){
+    	super("Optional Features", _reqId);
     }
     
-    public OptionalFeatures(String featIncl,String sName, String sResp,String rCCode, String rIndex){
-        super("Optional Features",rCCode,rIndex);
+    public OptionalFeatures(String featIncl,String sName, String sResp,String rCCode, String _reqId){
+        super("Optional Features",rCCode,_reqId);
         this._reqFeatureIncluded = featIncl;
         this._reqSysName = sName;
         this._reqSysResponse = sResp;

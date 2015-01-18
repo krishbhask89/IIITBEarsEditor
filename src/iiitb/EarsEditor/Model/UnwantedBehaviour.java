@@ -16,12 +16,12 @@ public class UnwantedBehaviour extends EARSRequirement{
     private String _reqSysName;
     private String _reqSysResponse;
     
-    public UnwantedBehaviour(){
-    	super("Unwanted Behaviour");
+    public UnwantedBehaviour(String _reqId){
+    	super("Unwanted Behaviour", _reqId);
     }
    
-    public UnwantedBehaviour(String opCond,String opTrig,String sName, String sResp,String rCCode, String rIndex){
-        super("Unwanted Behaviour",rCCode,rIndex);
+    public UnwantedBehaviour(String opCond,String opTrig,String sName, String sResp,String rCCode, String _reqId){
+        super("Unwanted Behaviour",rCCode,_reqId);
         this._reqOptionalPreCond = opCond;
         this._reqTrigger = opTrig;
         this._reqSysName = sName;
