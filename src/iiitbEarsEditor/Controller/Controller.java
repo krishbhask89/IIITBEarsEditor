@@ -78,6 +78,8 @@ public class Controller {
 
             }
         }
+        
+        DomParser.CreateXML(reqSet, "test");
 
     }
 

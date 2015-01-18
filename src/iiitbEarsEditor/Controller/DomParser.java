@@ -141,7 +141,7 @@ public class DomParser {
             TransformerFactory transF = TransformerFactory.newInstance();
             Transformer transformer = transF.newTransformer();
             DOMSource dSrc = new DOMSource(doc);
-            StreamResult strRes = new StreamResult(new File("C:\\Users\\Krish\\Desktop\\EARSWorkSpace"+_fileName+".xml"));
+            StreamResult strRes = new StreamResult(new File("C:\\Users\\Krish\\Desktop\\EARSWorkSpace\\"+_fileName+".xml"));
             transformer.transform(dSrc, strRes);
         } catch (ParserConfigurationException | TransformerException e) {
         }
