@@ -8,6 +8,7 @@ package iiitbEarsEditor.View;
 import java.awt.Component;
 import java.util.EventObject;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.CellEditorListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -25,6 +26,18 @@ public class OptionalFeaturesRequirementUI extends javax.swing.JPanel {//impleme
         initComponents();
     }
 
+    public JTextField getFeature_included() {
+        return feature_included;
+    }    
+
+    public JTextField getSys_name() {
+        return sys_name;
+    }
+
+    public JTextField getSys_response() {
+        return sys_response;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +48,7 @@ public class OptionalFeaturesRequirementUI extends javax.swing.JPanel {//impleme
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        specific_state = new javax.swing.JTextField();
+        feature_included = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         sys_name = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -43,7 +56,7 @@ public class OptionalFeaturesRequirementUI extends javax.swing.JPanel {//impleme
 
         jLabel1.setText("Where");
 
-        specific_state.setText("<in a specific state>");
+        feature_included.setText("<feature included>");
 
         jLabel2.setText("the");
 
@@ -63,7 +76,7 @@ public class OptionalFeaturesRequirementUI extends javax.swing.JPanel {//impleme
                         .addGap(31, 31, 31)
                         .addComponent(jLabel1)
                         .addGap(40, 40, 40)
-                        .addComponent(specific_state, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(feature_included, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
@@ -81,7 +94,7 @@ public class OptionalFeaturesRequirementUI extends javax.swing.JPanel {//impleme
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(specific_state, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(feature_included, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -94,10 +107,10 @@ public class OptionalFeaturesRequirementUI extends javax.swing.JPanel {//impleme
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField feature_included;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField specific_state;
     private javax.swing.JTextField sys_name;
     private javax.swing.JTextField sys_response;
     // End of variables declaration//GEN-END:variables

@@ -22,7 +22,7 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="specific_state" min="-2" max="-2" attributes="0"/>
+                      <Component id="feature_included" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -45,7 +45,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="specific_state" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="feature_included" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -65,9 +65,9 @@
         <Property name="text" type="java.lang.String" value="Where"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="specific_state">
+    <Component class="javax.swing.JTextField" name="feature_included">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;in a specific state&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;feature included&gt;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

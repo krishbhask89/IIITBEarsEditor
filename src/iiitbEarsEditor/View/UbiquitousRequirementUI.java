@@ -8,6 +8,7 @@ package iiitbEarsEditor.View;
 import java.awt.Component;
 import java.util.EventObject;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.CellEditorListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -23,6 +24,14 @@ public class UbiquitousRequirementUI extends javax.swing.JPanel {//implements Ta
      */
     public UbiquitousRequirementUI() {
         initComponents();
+    }
+
+    public JTextField getSys_name() {
+        return sys_name;
+    }
+
+    public JTextField getSys_response() {
+        return sys_response;
     }
 
     /**
