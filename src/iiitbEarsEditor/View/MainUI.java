@@ -9,7 +9,12 @@ import iiitbEarsEditor.Controller.Controller;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -105,6 +110,11 @@ public class MainUI extends javax.swing.JFrame {
         file_menu.add(new_FileMenu);
 
         open_FileMenu.setText("Open");
+        open_FileMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                open_FileMenuActionPerformed(evt);
+            }
+        });
         file_menu.add(open_FileMenu);
 
         save_FileMenu.setText("Save");
@@ -186,8 +196,21 @@ public class MainUI extends javax.swing.JFrame {
     private void save_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_FileMenuActionPerformed
         // TODO add your handling code here:
         JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
-        new Controller().onSave(d);
+        Controller.onSave(d);
     }//GEN-LAST:event_save_FileMenuActionPerformed
+
+    private void open_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_FileMenuActionPerformed
+        try {
+            JFileChooser chooser = new JFileChooser();
+            File f = new File(new File("filename.txt").getCanonicalPath());
+            chooser.setSelectedFile(f);
+            chooser.showOpenDialog(null);
+            File curFile = chooser.getSelectedFile();
+            Controller.onOpen(curFile);
+        } catch (IOException ex) {
+            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_open_FileMenuActionPerformed
 
     public static void addElements(int type) {
         //adding the requirement based on the type, by creating that particular object

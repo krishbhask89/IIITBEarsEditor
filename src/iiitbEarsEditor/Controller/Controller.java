@@ -8,6 +8,7 @@ package iiitbEarsEditor.Controller;
 import iiitb.EarsEditor.Model.*;
 import iiitbEarsEditor.View.*;
 import java.awt.Component;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -21,7 +22,7 @@ import javax.swing.JTextField;
 public class Controller {
 
     //reads text from UI and creates requirements list and calls XML Parser
-    public void onSave(JPanel panel) {
+    public static void onSave(JPanel panel) {
 
         //contains all components on the panel (left panel + requirement panel)
         Component reqs[] = panel.getComponents();
@@ -87,6 +88,11 @@ public class Controller {
         }
         
         //Calling XML Parser with requirement list and the filename
-        DomParser.CreateXML(reqSet, "test");
+        XmlParser.CreateXML(reqSet, "test");
+    }
+    
+    public static void onOpen(File curFile){
+        
+        XmlParser.ReadXML(curFile.getPath());
     }
 }
