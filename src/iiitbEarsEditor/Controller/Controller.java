@@ -8,6 +8,7 @@ package iiitbEarsEditor.Controller;
 import iiitb.EarsEditor.Model.*;
 import iiitbEarsEditor.View.*;
 import java.awt.Component;
+import java.awt.GridLayout;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
@@ -26,7 +27,7 @@ public class Controller {
 
         //contains all components on the panel (left panel + requirement panel)
         Component reqs[] = panel.getComponents();
-        
+
         //requirement list
         ArrayList<EARSRequirement> reqSet = new ArrayList<EARSRequirement>();
 
@@ -35,17 +36,17 @@ public class Controller {
 
             //reading reqType from left panel
             String reqType = ((JComboBox) ((LeftPaneUI) reqs[i]).getComponent(5)).getSelectedItem().toString();
-            
+
             //creates requirement object(with reqID fetched from left panel) according to the reqType 
             //UI objects for reading from requirement panel
             switch (reqType) {
 
-                case "Ubiquitous":  
+                case "Ubiquitous":
                     UbiquitousRequirementUI urUI = (UbiquitousRequirementUI) reqs[i + 1];
                     UbiquitousRequirement ur = new UbiquitousRequirement(((JLabel) (((LeftPaneUI) reqs[i]).getComponent(3))).getText());
                     ur.setReqSysName(urUI.getSys_name().getText());
                     ur.setReqSysResponse(urUI.getSys_response().getText());
-                    reqSet.add(ur);                    
+                    reqSet.add(ur);
                     break;
 
                 case "Event Driven":
@@ -55,9 +56,9 @@ public class Controller {
                     ed.setReqTrigger(edUI.getTrigger().getText());
                     ed.setReqSysName(edUI.getSys_name().getText());
                     ed.setReqSysResponse(edUI.getSys_response().getText());
-                    reqSet.add(ed);                    
+                    reqSet.add(ed);
                     break;
-                case "Unwanted":
+                case "Unwanted Behaviour":
                     UnwantedBehaviourRequirementUI ubUI = (UnwantedBehaviourRequirementUI) reqs[i + 1];
                     UnwantedBehaviour ub = new UnwantedBehaviour(((JLabel) (((LeftPaneUI) reqs[i]).getComponent(3))).getText());
                     ub.setReqOptionalPreCond(ubUI.getOpt_conditions().getText());
@@ -74,7 +75,7 @@ public class Controller {
                     sd.setReqSysResponse(sdUI.getSys_response().getText());
                     reqSet.add(sd);
                     break;
-                case "Optional":
+                case "Optional Features":
                     OptionalFeaturesRequirementUI ofUI = (OptionalFeaturesRequirementUI) reqs[i + 1];
                     OptionalFeatures of = new OptionalFeatures(((JLabel) (((LeftPaneUI) reqs[i]).getComponent(3))).getText());
                     of.setReqFeatureIncluded(ofUI.getFeature_included().getText());
@@ -89,9 +90,87 @@ public class Controller {
         //Calling XML Parser with requirement list and the filename
         XmlParser.CreateXML(reqSet, fileName);
     }
-    
-    public static void onOpen(File curFile){
-        
-        XmlParser.ReadXML(curFile.getPath());
+
+    public static JPanel onOpen(File curFile) {
+
+        ArrayList<EARSRequirement> reqList = XmlParser.ReadXML(curFile.getPath());
+
+        JPanel panel = new JPanel((new GridLayout(0, 2)));
+
+        for (EARSRequirement req : reqList) {
+
+            JPanel leftPane = new LeftPaneUI();
+
+            //panel.add(new LeftPaneUI());
+            switch (req.getReqType()) {
+
+                case "Ubiquitous":
+                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(1);
+                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
+                    panel.add(leftPane);
+                    UbiquitousRequirementUI ubUI = new UbiquitousRequirementUI();
+                    UbiquitousRequirement ub = (UbiquitousRequirement) req;
+                    ubUI.getSys_name().setText(ub.getReqSysName());
+                    ubUI.getSys_response().setText(ub.getReqSysResponse());
+                    panel.add(ubUI);
+                    break;
+                case "Event Driven":
+                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(2);
+                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
+                    panel.add(leftPane);
+                    EventDrivenRequirementUI edrUI = new EventDrivenRequirementUI();
+                    EventDrivenRequirement ed = (EventDrivenRequirement) req;
+                    edrUI.getOpt_conditions().setText(ed.getReqOptionalPreCond());
+                    edrUI.getTrigger().setText(ed.getReqTrigger());
+                    edrUI.getSys_name().setText(ed.getReqSysName());
+                    edrUI.getSys_response().setText(ed.getReqSysResponse());
+                    panel.add(edrUI);
+                    break;
+                case "Unwanted Behaviour":
+                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(3);
+                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
+                    panel.add(leftPane);
+                    UnwantedBehaviourRequirementUI unUI = new UnwantedBehaviourRequirementUI();
+                    UnwantedBehaviour ubr = (UnwantedBehaviour) req;
+                    unUI.getOpt_conditions().setText(ubr.getReqOptionalPreCond());
+                    unUI.getTrigger().setText(ubr.getReqTrigger());
+                    unUI.getSys_name().setText(ubr.getReqSysName());
+                    unUI.getSys_response().setText(ubr.getReqSysResponse());
+                    panel.add(unUI);
+                    break;
+                case "State Driven":
+                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(4);
+                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
+                    panel.add(leftPane);
+                    StateDrivenRequirementUI stdUI = new StateDrivenRequirementUI();
+                    StateDrivenReq sdr = (StateDrivenReq) req;
+                    stdUI.getSpecific_state().setText(sdr.getReqSpecificState());
+                    stdUI.getSys_name().setText(sdr.getReqSysName());
+                    stdUI.getSys_response().setText(sdr.getReqSysResponse());
+                    panel.add(stdUI);
+                    break;
+                case "Optional Features":
+                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(5);
+                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
+                    panel.add(leftPane);
+                    OptionalFeaturesRequirementUI opUI = new OptionalFeaturesRequirementUI();
+                    OptionalFeatures op = (OptionalFeatures) req;
+                    opUI.getFeature_included().setText(op.getReqFeatureIncluded());
+                    opUI.getSys_name().setText(op.getReqSysName());
+                    opUI.getSys_response().setText(op.getReqSysResponse());
+                    panel.add(opUI);
+                    break;
+                case "Complex": //Complex 
+                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(6);
+                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
+                    panel.add(leftPane);
+                    //to do
+                    break;
+
+            }
+
+        }
+
+        return panel;
     }
 }

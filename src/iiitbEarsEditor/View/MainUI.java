@@ -200,45 +200,49 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_del_reqActionPerformed
 
     private void save_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_FileMenuActionPerformed
-        // TODO add your handling code here:
-        JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
-        //System.out.println(d.getName());
-        Controller.onSave(d,d.getName());
+        
+        JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());        
+        Controller.onSave(d,jTabbedPane1.getTitleAt(jTabbedPane1.getSelectedIndex()));
     }//GEN-LAST:event_save_FileMenuActionPerformed
 
     private void open_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_FileMenuActionPerformed
         try {
+            
+            //dispplay dialog box to get filename from user
             JFileChooser chooser = new JFileChooser();
             File f = new File(new File("filename.txt").getCanonicalPath());
             chooser.setSelectedFile(f);
             chooser.showOpenDialog(null);
             File curFile = chooser.getSelectedFile();
-            Controller.onOpen(curFile);
+            
+            //calls onOpne function to read Xml file and takes a panel
+           JPanel openFileTab = Controller.onOpen(curFile);
+           
+            //adding new tab which displays the opened xml file
+            jTabbedPane1.addTab(filename, openFileTab);
+            //jTabbedPane1.setSelectedIndex(countPanel - 2);
+            
         } catch (IOException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_open_FileMenuActionPerformed
 
     private void saveAs_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAs_FileMenuActionPerformed
-        // TODO add your handling code here:
+        
         String fileName = JOptionPane.showInputDialog(this,"Save as.." );
-        JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
-        d.setName(fileName);
-        //System.out.println(d.getName());
-        Controller.onSave(d,fileName);    
+        JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());        
+       
+        Controller.onSave(d,fileName);  
+        jTabbedPane1.setTitleAt(jTabbedPane1.getSelectedIndex(), fileName);
     }//GEN-LAST:event_saveAs_FileMenuActionPerformed
 
     public static void addElements(int type) {
         //adding the requirement based on the type, by creating that particular object
 
         JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
-        //System.out.println(d.getClass());
+       
         switch (type) {
-
-                //System.out.println(gr.getOpt_conditions().getText());
-            //System.out.println(d.getComponentCount());
-            // System.out.println(d.getComponent(0).getClass());
-            //System.out.println(((GenericRequirementUI)d.getComponent(1)).getOpt_conditions().getText());
+            
             case 1:
                 UbiquitousRequirementUI ub = new UbiquitousRequirementUI();
                 d.add(ub);
@@ -259,14 +263,11 @@ public class MainUI extends javax.swing.JFrame {
                 OptionalFeaturesRequirementUI op = new OptionalFeaturesRequirementUI();
                 d.add(op);
                 break;
-            case 6: //Complex//OptionalFeaturesRequirementUI op = new OptionalFeaturesRequirementUI();
-                //d.add(op);
+            case 6: //Complex //to do
                 break;
 
         }
 
-        //System.out.println(count);
-        //System.out.println(((LeftPaneUI)d.getComponent(count)).getComponent(5).getClass());
         ((JComboBox) ((LeftPaneUI) d.getComponent(d.getComponentCount() - 2)).getComponent(5)).setEnabled(false);
 
     }
