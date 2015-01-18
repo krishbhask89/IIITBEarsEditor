@@ -32,9 +32,9 @@ public class MainUI extends javax.swing.JFrame {
      * Creates new form MainUI
      */
     //used to keep track of the number of tabs
-    int countPanel = 1;
-    String filename = new String();
-
+    public int countPanel = 1;
+    public String filename = new String();
+    public static String dirPath; 
     public MainUI() {
         initComponents();
     }
@@ -219,8 +219,8 @@ public class MainUI extends javax.swing.JFrame {
            JPanel openFileTab = Controller.onOpen(curFile);
            
             //adding new tab which displays the opened xml file
-            jTabbedPane1.addTab(filename, openFileTab);
-            //jTabbedPane1.setSelectedIndex(countPanel - 2);
+            jTabbedPane1.addTab(curFile.getName(), openFileTab);
+            jTabbedPane1.setSelectedIndex(countPanel - 2);
             
         } catch (IOException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -232,7 +232,7 @@ public class MainUI extends javax.swing.JFrame {
         String fileName = JOptionPane.showInputDialog(this,"Save as.." );
         JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());        
        
-        Controller.onSave(d,fileName);  
+        Controller.onSave(d,dirPath+fileName);  
         jTabbedPane1.setTitleAt(jTabbedPane1.getSelectedIndex(), fileName);
     }//GEN-LAST:event_saveAs_FileMenuActionPerformed
 
@@ -302,7 +302,8 @@ public class MainUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainUI().setVisible(true);
+             dirPath = JOptionPane.showInputDialog("Workspace directory is..");
+             new MainUI().setVisible(true);
             }
         });
     }

@@ -100,24 +100,21 @@ public class Controller {
         for (EARSRequirement req : reqList) {
 
             JPanel leftPane = new LeftPaneUI();
-
-            //panel.add(new LeftPaneUI());
+            panel.add(leftPane);
+            ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);                    
+            
             switch (req.getReqType()) {
 
-                case "Ubiquitous":
-                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(1);
-                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
-                    panel.add(leftPane);
+                case "Ubiquitous":                    
+                    ((JLabel)leftPane.getComponent(4)).setText("Ubiquitous");                    
                     UbiquitousRequirementUI ubUI = new UbiquitousRequirementUI();
                     UbiquitousRequirement ub = (UbiquitousRequirement) req;
                     ubUI.getSys_name().setText(ub.getReqSysName());
                     ubUI.getSys_response().setText(ub.getReqSysResponse());
                     panel.add(ubUI);
                     break;
-                case "Event Driven":
-                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(2);
-                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
-                    panel.add(leftPane);
+                case "Event Driven":               
+                    ((JLabel)leftPane.getComponent(4)).setText("Event Driven");                    
                     EventDrivenRequirementUI edrUI = new EventDrivenRequirementUI();
                     EventDrivenRequirement ed = (EventDrivenRequirement) req;
                     edrUI.getOpt_conditions().setText(ed.getReqOptionalPreCond());
@@ -127,9 +124,7 @@ public class Controller {
                     panel.add(edrUI);
                     break;
                 case "Unwanted Behaviour":
-                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(3);
-                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
-                    panel.add(leftPane);
+                    ((JLabel)leftPane.getComponent(4)).setText("Unwanted Behaviour");                    
                     UnwantedBehaviourRequirementUI unUI = new UnwantedBehaviourRequirementUI();
                     UnwantedBehaviour ubr = (UnwantedBehaviour) req;
                     unUI.getOpt_conditions().setText(ubr.getReqOptionalPreCond());
@@ -139,9 +134,7 @@ public class Controller {
                     panel.add(unUI);
                     break;
                 case "State Driven":
-                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(4);
-                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
-                    panel.add(leftPane);
+                    ((JLabel)leftPane.getComponent(4)).setText("State Driven");                    
                     StateDrivenRequirementUI stdUI = new StateDrivenRequirementUI();
                     StateDrivenReq sdr = (StateDrivenReq) req;
                     stdUI.getSpecific_state().setText(sdr.getReqSpecificState());
@@ -150,9 +143,7 @@ public class Controller {
                     panel.add(stdUI);
                     break;
                 case "Optional Features":
-                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(5);
-                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
-                    panel.add(leftPane);
+                    ((JLabel)leftPane.getComponent(4)).setText("Optional Features");                    
                     OptionalFeaturesRequirementUI opUI = new OptionalFeaturesRequirementUI();
                     OptionalFeatures op = (OptionalFeatures) req;
                     opUI.getFeature_included().setText(op.getReqFeatureIncluded());
@@ -161,9 +152,7 @@ public class Controller {
                     panel.add(opUI);
                     break;
                 case "Complex": //Complex 
-                    ((JComboBox) (leftPane.getComponent(5))).setSelectedIndex(6);
-                    ((JComboBox) (leftPane.getComponent(5))).setEnabled(false);
-                    panel.add(leftPane);
+                    ((JLabel)leftPane.getComponent(4)).setText("Complex");                    
                     //to do
                     break;
 
