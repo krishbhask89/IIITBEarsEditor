@@ -195,14 +195,18 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_new_reqActionPerformed
 
     private void del_reqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_reqActionPerformed
-
-
     }//GEN-LAST:event_del_reqActionPerformed
 
     private void save_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_FileMenuActionPerformed
         
         JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());        
         Controller.onSave(d,jTabbedPane1.getTitleAt(jTabbedPane1.getSelectedIndex()));
+        if(d.getName() == null){
+            String fileName = JOptionPane.showInputDialog(this,"Save as.." );
+            Controller.onSave(d,dirPath+fileName);  
+            jTabbedPane1.setTitleAt(jTabbedPane1.getSelectedIndex(), fileName);
+                      
+        }
     }//GEN-LAST:event_save_FileMenuActionPerformed
 
     private void open_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_FileMenuActionPerformed
