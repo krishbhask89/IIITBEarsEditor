@@ -1,3 +1,5 @@
+//Contributor : Sai Bhaskar Krishna
+//The XMLValidator class validates the file specified against the EARS Schema, from the EARS_Schema.xsd and returns a boolean
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

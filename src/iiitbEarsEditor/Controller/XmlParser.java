@@ -1,3 +1,6 @@
+//Contributor : Sai Bhaskar Krishna
+//The XMLParser iterates through the requirement List to create a XML document to be stored in the backend in CreateXML
+//The XMLParser parses through the XML file and populates the requirement list in the ReadXML
 package iiitbEarsEditor.Controller;
 
 import iiitb.EarsEditor.Model.EARSRequirement;

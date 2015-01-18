@@ -20,6 +20,10 @@ import javax.swing.JTextField;
  *
  * @author Krish
  */
+//The controller is the middle-man between the UI and the backand. 
+//It parses the panel obtained from UI to populate Requirement List in the onSave
+//It iterates through the list of requirements to create a panel for display in the onOpen
+
 public class Controller {
 
     //reads text from UI and creates requirements list and calls XML Parser
