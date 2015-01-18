@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -126,6 +127,11 @@ public class MainUI extends javax.swing.JFrame {
         file_menu.add(save_FileMenu);
 
         saveAs_FileMenu.setText("Save As");
+        saveAs_FileMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAs_FileMenuActionPerformed(evt);
+            }
+        });
         file_menu.add(saveAs_FileMenu);
 
         close_FileMenu.setText("Close");
@@ -196,7 +202,8 @@ public class MainUI extends javax.swing.JFrame {
     private void save_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_FileMenuActionPerformed
         // TODO add your handling code here:
         JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
-        Controller.onSave(d);
+        //System.out.println(d.getName());
+        Controller.onSave(d,d.getName());
     }//GEN-LAST:event_save_FileMenuActionPerformed
 
     private void open_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_FileMenuActionPerformed
@@ -211,6 +218,15 @@ public class MainUI extends javax.swing.JFrame {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_open_FileMenuActionPerformed
+
+    private void saveAs_FileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAs_FileMenuActionPerformed
+        // TODO add your handling code here:
+        String fileName = JOptionPane.showInputDialog(this,"Save as.." );
+        JPanel d = (JPanel) jTabbedPane1.getComponentAt(jTabbedPane1.getSelectedIndex());
+        d.setName(fileName);
+        //System.out.println(d.getName());
+        Controller.onSave(d,fileName);    
+    }//GEN-LAST:event_saveAs_FileMenuActionPerformed
 
     public static void addElements(int type) {
         //adding the requirement based on the type, by creating that particular object

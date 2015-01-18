@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 public class Controller {
 
     //reads text from UI and creates requirements list and calls XML Parser
-    public static void onSave(JPanel panel) {
+    public static void onSave(JPanel panel, String fileName) {
 
         //contains all components on the panel (left panel + requirement panel)
         Component reqs[] = panel.getComponents();
@@ -86,9 +86,8 @@ public class Controller {
 
             }
         }
-        
         //Calling XML Parser with requirement list and the filename
-        XmlParser.CreateXML(reqSet, "test");
+        XmlParser.CreateXML(reqSet, fileName);
     }
     
     public static void onOpen(File curFile){

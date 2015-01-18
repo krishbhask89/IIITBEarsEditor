@@ -148,8 +148,9 @@ public class XmlParser {
 
         try 
         {
-          if(XmlValidate.validate(_fileName))
-          {  File xmlRead = new File(_fileName);
+         // if(XmlValidate.validate(_fileName))
+          //{  
+            File xmlRead = new File(_fileName);
 
             DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -217,7 +218,7 @@ public class XmlParser {
             for(EARSRequirement req : reqsList){
                 System.out.println(req.getReqType());
             }
-          }   
+          //}   
         } catch (ParserConfigurationException | SAXException | IOException | DOMException ex) {}
         return reqsList;
     }
