@@ -23,6 +23,7 @@ public abstract class EARSRequirement{
             return this.colour;
         }
     };
+    
     private ColorCode _reqColorCode;
     
     public String getReqId() {

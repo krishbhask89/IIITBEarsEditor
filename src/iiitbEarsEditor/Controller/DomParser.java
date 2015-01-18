@@ -56,23 +56,8 @@ public class DomParser {
 
                 Element requirement = doc.createElement("requirement");
                 EARSReq.appendChild(requirement);
-                
+
                 switch (req.getReqType()) {
-                    case "Generic":
-                        GenericRequirement gr = (GenericRequirement) req;
-                        Element pCond = doc.createElement("precondition");
-                        pCond.appendChild(doc.createTextNode(gr.getReqOptionalPreCond()));
-                        requirement.appendChild(pCond);
-                        Element trigger = doc.createElement("trigger");
-                        trigger.appendChild(doc.createTextNode(gr.getReqOptionalTrigger()));
-                        requirement.appendChild(trigger);
-                        Element sysName = doc.createElement("system_name");
-                        sysName.appendChild(doc.createTextNode(gr.getReqSysName()));
-                        requirement.appendChild(sysName);
-                        Element sysResp = doc.createElement("system_response");
-                        sysResp.appendChild(doc.createTextNode(gr.getReqSysResponse()));
-                        requirement.appendChild(sysResp);
-                        break;
                     case "Ubiquitous":
                         UbiquitousRequirement ur = (UbiquitousRequirement) req;
                         Element u_sysName = doc.createElement("system_name");
@@ -141,97 +126,85 @@ public class DomParser {
             TransformerFactory transF = TransformerFactory.newInstance();
             Transformer transformer = transF.newTransformer();
             DOMSource dSrc = new DOMSource(doc);
-            StreamResult strRes = new StreamResult(new File("C:\\Users\\Krish\\Desktop\\EARSWorkSpace\\"+_fileName+".xml"));
+            StreamResult strRes = new StreamResult(new File("C:\\Users\\Krish\\Desktop\\EARSWorkSpace\\" + _fileName + ".xml"));
             transformer.transform(dSrc, strRes);
         } catch (ParserConfigurationException | TransformerException e) {
         }
-
     }
 
-    
-    public static ArrayList<EARSRequirement> ReadXML(String _fileName){
+    public static ArrayList<EARSRequirement> ReadXML(String _fileName) {
         ArrayList<EARSRequirement> reqsList = new ArrayList();
-        String opCond,opTrig,sName,sResp,specState,featIncl;
-        String reqType,reqCCode,reqIndex;
-        
-        try{
+        String opCond, opTrig, sName, sResp, specState, featIncl;
+        String reqType, reqCCode, reqIndex;
+
+        try {
             File xmlRead = new File(_fileName);
-            
-            DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();  
-   	    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();  
-	    Document doc = documentBuilder.parse(xmlRead);
-            doc.getDocumentElement().normalize();  
-	    NodeList nodeList = doc.getElementsByTagName("EARSReq");
-            
+
+            DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+            Document doc = documentBuilder.parse(xmlRead);
+            doc.getDocumentElement().normalize();
+            NodeList nodeList = doc.getElementsByTagName("EARSReq");
+
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-                        
-            for(int reqNum=0; reqNum < nodeList.getLength(); reqNum++){
-              Node node = nodeList.item(reqNum);
-              if(node.getNodeType() == Node.ELEMENT_NODE)
-               { Element EARSReq = (Element) node;
-                  reqType = EARSReq.getElementsByTagName("req_type").item(0).getTextContent();
-                  switch(reqType)
-                  {    case "Generic":
-                        opCond = EARSReq.getElementsByTagName("precondition").item(0).getTextContent();
-                        opTrig = EARSReq.getElementsByTagName("trigger").item(0).getTextContent();
-                        sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
-                        sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
-                        reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
-                        reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
-                        GenericRequirement gr = new GenericRequirement(opCond, opTrig, sName, sResp,reqCCode,reqIndex);
-                        reqsList.add(gr);
-                        break;
-                    case "Ubiquitous":
-                        sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
-                        sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
-                        reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
-                        reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
-                        UbiquitousRequirement ur = new UbiquitousRequirement(sName, sResp,reqCCode,reqIndex);
-                        reqsList.add(ur);
-                        break;
-                    case "Event Driven":
-                        opCond = EARSReq.getElementsByTagName("precondition").item(0).getTextContent();
-                        opTrig = EARSReq.getElementsByTagName("trigger").item(0).getTextContent();
-                        sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
-                        sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
-                        reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
-                        reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
-                        EventDrivenRequirement edr = new EventDrivenRequirement(opCond, opTrig, sName, sResp,reqCCode,reqIndex);
-                        reqsList.add(edr);
-                        break;
-                    case "Unwanted Behaviour":
-                        opCond = EARSReq.getElementsByTagName("precondition").item(0).getTextContent();
-                        opTrig = EARSReq.getElementsByTagName("trigger").item(0).getTextContent();
-                        sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
-                        sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
-                        reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
-                        reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
-                        UnwantedBehaviour ubr = new UnwantedBehaviour(opCond, opTrig, sName, sResp,reqCCode,reqIndex);
-                        reqsList.add(ubr);
-                        break;
-                    case "State Driven":
-                        specState = EARSReq.getElementsByTagName("specific_state").item(0).getTextContent();
-                        sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
-                        sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
-                        reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
-                        reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
-                        StateDrivenReq sdr = new StateDrivenReq(specState, sName, sResp,reqCCode,reqIndex);
-                        reqsList.add(sdr);
-                        break;
-                    case "Optional Features":
-                        featIncl = EARSReq.getElementsByTagName("feature_included").item(0).getTextContent();
-                        sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
-                        sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
-                        reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
-                        reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
-                        OptionalFeatures opF = new OptionalFeatures(featIncl, sName, sResp,reqCCode,reqIndex);
-                        reqsList.add(opF);
-                        break;
-                  }    
+
+            for (int reqNum = 0; reqNum < nodeList.getLength(); reqNum++) {
+                Node node = nodeList.item(reqNum);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element EARSReq = (Element) node;
+                    reqType = EARSReq.getElementsByTagName("req_type").item(0).getTextContent();
+                    switch (reqType) {
+                        case "Ubiquitous":
+                            sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
+                            sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
+                            reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
+                            reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
+                            UbiquitousRequirement ur = new UbiquitousRequirement(sName, sResp, reqCCode, reqIndex);
+                            reqsList.add(ur);
+                            break;
+                        case "Event Driven":
+                            opCond = EARSReq.getElementsByTagName("precondition").item(0).getTextContent();
+                            opTrig = EARSReq.getElementsByTagName("trigger").item(0).getTextContent();
+                            sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
+                            sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
+                            reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
+                            reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
+                            EventDrivenRequirement edr = new EventDrivenRequirement(opCond, opTrig, sName, sResp, reqCCode, reqIndex);
+                            reqsList.add(edr);
+                            break;
+                        case "Unwanted Behaviour":
+                            opCond = EARSReq.getElementsByTagName("precondition").item(0).getTextContent();
+                            opTrig = EARSReq.getElementsByTagName("trigger").item(0).getTextContent();
+                            sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
+                            sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
+                            reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
+                            reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
+                            UnwantedBehaviour ubr = new UnwantedBehaviour(opCond, opTrig, sName, sResp, reqCCode, reqIndex);
+                            reqsList.add(ubr);
+                            break;
+                        case "State Driven":
+                            specState = EARSReq.getElementsByTagName("specific_state").item(0).getTextContent();
+                            sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
+                            sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
+                            reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
+                            reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
+                            StateDrivenReq sdr = new StateDrivenReq(specState, sName, sResp, reqCCode, reqIndex);
+                            reqsList.add(sdr);
+                            break;
+                        case "Optional Features":
+                            featIncl = EARSReq.getElementsByTagName("feature_included").item(0).getTextContent();
+                            sName = EARSReq.getElementsByTagName("system_name").item(0).getTextContent();
+                            sResp = EARSReq.getElementsByTagName("system_response").item(0).getTextContent();
+                            reqCCode = EARSReq.getElementsByTagName("colour_code").item(0).getTextContent();
+                            reqIndex = EARSReq.getElementsByTagName("index").item(0).getTextContent();
+                            OptionalFeatures opF = new OptionalFeatures(featIncl, sName, sResp, reqCCode, reqIndex);
+                            reqsList.add(opF);
+                            break;
+                    }
                 }
             }
-        }catch(ParserConfigurationException | SAXException | IOException | DOMException ex){
+        } catch (ParserConfigurationException | SAXException | IOException | DOMException ex) {
         }
-      return reqsList;
+        return reqsList;
     }
 }

@@ -20,23 +20,31 @@ import javax.swing.JTextField;
  */
 public class Controller {
 
+    //reads text from UI and creates requirements list and calls XML Parser
     public void onSave(JPanel panel) {
 
+        //contains all components on the panel (left panel + requirement panel)
         Component reqs[] = panel.getComponents();
+        
+        //requirement list
         ArrayList<EARSRequirement> reqSet = new ArrayList<EARSRequirement>();
 
+        //access left panel and requirement panel n reads text
         for (int i = 0; i < reqs.length; i += 2) {
 
+            //reading reqType from left panel
             String reqType = ((JComboBox) ((LeftPaneUI) reqs[i]).getComponent(5)).getSelectedItem().toString();
+            
+            //creates requirement object(with reqID fetched from left panel) according to the reqType 
+            //UI objects for reading from requirement panel
             switch (reqType) {
 
-                case "Ubiquitous":
+                case "Ubiquitous":  
                     UbiquitousRequirementUI urUI = (UbiquitousRequirementUI) reqs[i + 1];
                     UbiquitousRequirement ur = new UbiquitousRequirement(((JLabel) (((LeftPaneUI) reqs[i]).getComponent(3))).getText());
                     ur.setReqSysName(urUI.getSys_name().getText());
                     ur.setReqSysResponse(urUI.getSys_response().getText());
-                    reqSet.add(ur);
-                    //System.out.println(ur.getReqType() + " " + ur.getReqSysName() + " " + ur.getReqSysResponse());
+                    reqSet.add(ur);                    
                     break;
 
                 case "Event Driven":
@@ -46,8 +54,7 @@ public class Controller {
                     ed.setReqTrigger(edUI.getTrigger().getText());
                     ed.setReqSysName(edUI.getSys_name().getText());
                     ed.setReqSysResponse(edUI.getSys_response().getText());
-                    reqSet.add(ed);
-                    //System.out.println(ed.getReqType() + " " + ed.getReqSysName() + " " + ed.getReqSysResponse());
+                    reqSet.add(ed);                    
                     break;
                 case "Unwanted":
                     UnwantedBehaviourRequirementUI ubUI = (UnwantedBehaviourRequirementUI) reqs[i + 1];
@@ -79,8 +86,7 @@ public class Controller {
             }
         }
         
+        //Calling XML Parser with requirement list and the filename
         DomParser.CreateXML(reqSet, "test");
-
     }
-
 }

@@ -59,5 +59,4 @@ public class UnwantedBehaviour extends EARSRequirement{
     public String getReqSysResponse() {
         return _reqSysResponse;
     }
-
 }
